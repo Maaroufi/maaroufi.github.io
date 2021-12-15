@@ -705,6 +705,10 @@ b, strong {
       width: 40%;
       border-radius: 5px;
     }
+
+    .overlay p {
+      margin: 20px;
+    }
     
     @media (max-width: 1200px) {
         .overlay img {
