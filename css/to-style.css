@@ -703,6 +703,8 @@ b, strong {
 
     .overlay img {
       width: 40%;
+      display:block;
+      margin: 30px auto;
       border-radius: 5px;
     }
 
