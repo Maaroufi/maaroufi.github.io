@@ -852,9 +852,9 @@ b, strong {
   border-radius: 6px;
   list-style-type: none;
   display: inline-block;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   padding: 1%;
   border: 1px solid rgba(255, 255, 255, 0.6);
   cursor: pointer;
