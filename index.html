@@ -87,7 +87,7 @@
                           <img src="images/undraw/me.jpg" class="img-fluid" alt="svg image">
                           <div class='text'>
                               <div>
-                                  <span class='innertext'>VR and Unity Developer</span>
+                                  <span class='innertext'>Intelligent System Developer</span>
                               </div>
                           </div>
                       </div>
@@ -249,7 +249,7 @@
                           Source</a> 
 
                           <div class="close_project">                      
-                            <a class="btn btn-warning" type="button" href="#Balloon">
+                            <a class="btn btn-warning" type="button" href="#AR">
                              <i class="fa fa-times" style="font-size: 17px;"></i>
                              <span style="font-size: 15px;">Close Project</span>
                             </a>
@@ -315,7 +315,7 @@
                         Source</a> 
 
                         <div class="close_project">                      
-                            <a class="btn btn-warning" type="button" href="#Balloon">
+                            <a class="btn btn-warning" type="button" href="#HCI">
                              <i class="fa fa-times" style="font-size: 17px;"></i>
                              <span style="font-size: 15px;">Close Project</span>
                             </a>
@@ -362,7 +362,7 @@
                     Source</a> 
 
                     <div class="close_project">                      
-                        <a class="btn btn-warning" type="button" href="#Balloon">
+                        <a class="btn btn-warning" type="button" href="#Lumber">
                             <i class="fa fa-times" style="font-size: 17px;"></i>
                             <span style="font-size: 15px;">Close Project</span>
                         </a>
@@ -388,7 +388,7 @@
 
         <div id="popupValve" class="overlay">
             <div class="popup">
-                <a class="close" href="#Lumber">&times;</a>
+                <a class="close" href="#Valve">&times;</a>
                 <div class="content">
                     <h2>Smart Valve</h2>
 
@@ -429,7 +429,7 @@
                         Source</a> 
 
                     <div class="close_project">                      
-                        <a class="btn btn-warning" type="button" href="#Balloon">
+                        <a class="btn btn-warning" type="button" href="#Valve">
                             <i class="fa fa-times" style="font-size: 17px;"></i>
                             <span style="font-size: 15px;">Close Project</span>
                         </a>
@@ -437,7 +437,97 @@
                 </div>
             </div>
         </div>
+
+
+
+
+          <!-- Sixth Project -->
+          <div id="Conveyor" class="grid">
+              <img src="images/project/Conveyor/Laser.jpg">
+              <div class="grid__body">
+                  <div class="relative">
+                      <a class="grid__link" href="#popupConveyor"></a>
+                      <h1 class="grid__title">System Delivery Monitoring</h1>
+                      <p class="grid__author">Programmable delivery system monitoring of items on a conveyor belt</p>
+                  </div>
+                  <div class="mt-auto">
+                      <span class="grid__tag">#Microcontroller #MPLAB #Proteus #Assembly #PIC18F4520 #OP-AMP LM311</span>
+                  </div>
+              </div>
+          </div>
+
+          <div id="popupConveyor" class="overlay">
+              <div class="popup">
+                  <a class="close" href="#Conveyor">&times;</a>
+                  <div class="content">
+                      <h2>Smart Valve</h2>
+
+                      <p class="item-intro">
+                          A Programmable delivery system monitoring of items on a conveyor belt
+                      </p>
+                      <p>The objective of this project was to provide a solution that monitors a programmable delivery system of 
+                          items on a conveyer belt. The sensors we used are an LDR and a light source optical beam. An OP-AMP LM311
+                          provided the signal level, which corresponds to the presence of an item or not, and was processed by a 
+                          PIC18F4520 microcontroller.
+                          A control program was written in assembly language. It drives two 74LS47 binary code converters and two 
+                          7-segments LEDs in order to display the counting of items and batches.
+                          The design, programming, and simulation were performed by using Proteus 8.0 and MPLAB IDE v.8.92 
+                          software.
+                      </p>
+                      <img src="images/project/Conveyor/Legend.jpg">
+
+                      <p>System in function</p>
+                      <img src="images/project/Conveyor/Laser.jpg">
+                      
+                      <p>Diagram</p>
+                      <img src="images/project/Conveyor/Diagram.jpeg">
+
+                      <p>Schematic of the whole system simulated with Proteus 8</p>
+                      <img src="images/project/Conveyor/Schematic.jpg">
+                      
+                      <p>We needed to set up the Port C as an INPUT because the PIC is about to receive the signal coming from the 
+                          Comparator OP-AMP (through the bit 0) in order to treating it, but also as Output because we want to 
+                          control a buzzer by sending a signal by the same Port (bit 7). </p>
+                      <img src="images/project/Conveyor/PORTC.jpg">
+
+                      <p>The MPLAB ICD</p>
+                      <img src="images/project/Conveyor/Mplab.jpg">
+
+                      <p>Assembly Coding using MPLAB IDE</p>
+                      <img src="images/project/Conveyor/Program.jpg">
+             
+                      <br>Video demo:
+                      </p>
+
+                      <div class="video-container">
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/eV_miRAFVkg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+
+
+
+                      <div class="close_project">
+                          <a class="btn btn-warning" type="button" href="#Conveyor">
+                              <i class="fa fa-times" style="font-size: 17px;"></i>
+                              <span style="font-size: 15px;">Close Project</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
 
       <div class="col-lg-11 text-center mx-auto col-12">
         <div class="col-lg-8 mx-auto">
