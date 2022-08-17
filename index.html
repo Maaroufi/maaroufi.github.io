@@ -204,7 +204,111 @@
               </div>
           </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
           <!-- Second Project -->
+          <div id="CorLEGO" class="grid">
+              <img src="images/project/VR_to_AR/04.jpg">
+              <div class="grid__body">
+                  <div class="relative">
+                      <a class="grid__link" href="#popupCorLEGO"></a>
+                      <h1 class="grid__title">CorLEGO: Choice reaching with a LEGO arm robot</h1>
+                      <p class="grid__author">Simulation of the interaction between the visual attention (selection) and the motor 
+                          system</p>
+                  </div>
+                  <div class="mt-auto">
+                      <span class="grid__tag">#COSIVINA  #CoppeliaSim #LUA #Matlab #CEDAR</span>
+                  </div>
+              </div>
+          </div>
+
+          <div id="popupCorLEGO" class="overlay">
+              <div class="popup">
+                  <a class="close" href="#CorLEGO">&times;</a>
+                  <div class="content">
+                      <h2>Augmented Reality Hand Tracking</h2>
+
+                      <p class="item-intro">
+                          A project to modify a VR headset Oculus Rift CV1 to an AR device with hand recognition using Unity and a CNN.
+                      </p>
+                      <p>The research paper for this project is published and available on my Researchgate
+                          <a href="https://www.researchgate.net/publication/338356856_Augmented_Reality_Hand_Recognition_using_Oculus"
+                             target="_blank" rel="noopener noreferrer">
+                              here</a>
+                          <br>The poster of the project (see below) can be downloaded <a href="Poster_AR_Oculus.pptx">here</a>
+                      </p>
+                      <img src="poster.JPG">
+
+                      <p>The aim of this project was to implement a stereo camera platform to support Augmented Reality for a Virtual reality headset.
+                          To be fully immersive, the frames captured by the cameras must match the characteristic requirements, such as field of view, of the headset
+                          device and make both the video and the virtual world aligned as much as possible to augment the real world.
+                          Hand recognition systems could create a natural interaction between human and computer device, so the user can control UI or
+                          any applications designed to do so.</p>
+                      <img src="images/project/VR_to_AR/04.jpg">
+
+                      <p>Unity view, playing mode. Flask is used to stream a sequence of JPEG pictures, also known as Motion JPEG.
+                          This solution has the advantage of less latency, but meaning less quality too, because JPEG compression is not very fitted for streaming.</p>
+                      <img src="images/project/VR_to_AR/06.png">
+
+                      <p>Testing using a Raspberry Pi 3</p>
+                      <img src="images/project/VR_to_AR/08.jpg">
+
+                      <p>DataFlow diagram of the project</p>
+                      <img src="images/project/VR_to_AR/07.png">
+
+                      <p>Prototype of the system</p>
+                      <img src="images/project/VR_to_AR/09.jpg">
+
+                      <p>UDP ports are used to stream the coordinates of the hands from OpenCV to the Unity.
+                          Those coordinates are used to create a GameObject for the hands to interact with the virtual object</p>
+                      <img src="images/project/VR_to_AR/02.png">
+
+                      <p>UML class diagram for the Hand detection part of the system.</p>
+                      <img src="images/project/VR_to_AR/01.png">
+
+                      <p>UML class diagram of the Unity part.</p>
+                      <img src="images/project/VR_to_AR/03.png">
+
+                      <a
+                              href="https://github.com/Maaroufi/VR_to_AR_Oculus"
+                              target="_blank" rel="noopener noreferrer">
+                          Source</a>
+
+                      <div class="close_project">
+                          <a class="btn btn-warning" type="button" href="#AR">
+                              <i class="fa fa-times" style="font-size: 17px;"></i>
+                              <span style="font-size: 15px;">Close Project</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <!-- Third Project -->
           <div id="AR" class="grid">
               <img src="images/project/VR_to_AR/04.jpg">
               <div class="grid__body">
@@ -281,7 +385,7 @@
               </div>
           </div>
 
-          <!-- Third Project -->
+          <!-- Fourth Project -->
           <div id="HCI" class="grid">
             <img src="images/project/VR_HCI/04.jpg">
             <div class="grid__body">
@@ -347,7 +451,7 @@
             </div>
         </div>
 
-        <!-- Fourth Project -->
+        <!-- Fifth Project -->
           <div id="Lumber" class="grid">
             <img src="images/project/Lumberjack/02.png">
             <div class="grid__body">
@@ -394,7 +498,7 @@
             </div>
         </div>
 
-        <!-- Fifth Project -->
+        <!-- Sixth Project -->
           <div id="Valve" class="grid">
             <img src="images/project/Valves/02.jpeg">
             <div class="grid__body">
@@ -461,7 +565,7 @@
             </div>
         </div>
           
-          <!-- Sixth Project -->
+          <!-- Seventh Project -->
           <div id="Conveyor" class="grid">
               <img src="images/project/Conveyor/Laser.jpg">
               <div class="grid__body">
