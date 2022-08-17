@@ -228,7 +228,7 @@
                           system</p>
                   </div>
                   <div class="mt-auto">
-                      <span class="grid__tag">#Robotics #COSIVINA #CoppeliaSim #LUA #Matlab #CEDAR</span>
+                      <span class="grid__tag">#Robotics #COSIVINA #CoppeliaSim #V-REP #LUA #Matlab #CEDAR</span>
                   </div>
               </div>
           </div>
@@ -237,51 +237,97 @@
               <div class="popup">
                   <a class="close" href="#CorLEGO">&times;</a>
                   <div class="content">
-                      <h2>Augmented Reality Hand Tracking</h2>
+                      <h2>CorLEGO: Choice reaching with a LEGO arm robot</h2>
 
                       <p class="item-intro">
-                          A project to modify a VR headset Oculus Rift CV1 to an AR device with hand recognition using Unity and a CNN.
+                          This project (Strauss, S., Woodgate, P., Sami, S., & Heinke, D., 2015) tries to demonstrate the interaction 
+                          between the visual attention (selection) and the motor system not being processed in a serial chain but, in 
+                          contrary, processed in parallel manner with a leaking from cognitive processes to the motor. 
+                          To do that, the researchers, have made a “Choice reaching tasks” experiments where participants were asked to 
+                          reach an item (the odd colour as the target) presented to them.
                       </p>
-                      <p>The research paper for this project is published and available on my Researchgate
-                          <a href="https://www.researchgate.net/publication/338356856_Augmented_Reality_Hand_Recognition_using_Oculus"
+                      <p>The research paper for this project is published and available
+                          <a href="https://www.sciencedirect.com/science/article/pii/S0893608015002051#f000005"
                              target="_blank" rel="noopener noreferrer">
                               here</a>
-                          <br>The poster of the project (see below) can be downloaded <a href="Poster_AR_Oculus.pptx">here</a>
                       </p>
-                      <img src="poster.JPG">
+                      <img src="images/project/CorLEGO/Corlego.jpg">
 
-                      <p>The aim of this project was to implement a stereo camera platform to support Augmented Reality for a Virtual reality headset.
-                          To be fully immersive, the frames captured by the cameras must match the characteristic requirements, such as field of view, of the headset
-                          device and make both the video and the virtual world aligned as much as possible to augment the real world.
-                          Hand recognition systems could create a natural interaction between human and computer device, so the user can control UI or
-                          any applications designed to do so.</p>
-                      <img src="images/project/VR_to_AR/04.jpg">
+                      <p>CoRLEGO is an arm robot (with a 2-dimensional movement) developed by the researchers of the project, that 
+                          imitate how the attention leak onto the motor system. It follows the close-loop control (Todorov, 2004) 
+                          models of human behaviour which is, as opposed to the open-loop models, when a task has outputs that are 
+                          corelated and have an effect on the next inputs (Zrenner, C., Belardinelli, P., Müller-Dahlhaus, F., & 
+                          Ziemann, U., 2016). The aim of this project was to implement a virtual simulator to replace the physical 
+                          robotic arm used for the original project. To do so I used Cosivina, a framework to construct dynamic field
+                          architectures in Matlab and simulate the evolution of activation in these architectures, and CoppeliaSim 
+                          (formerly known as V-REP), a robot simulation platform</p>
+                      <img src="images/project/CorLEGO/verygood.jpg">
 
-                      <p>Unity view, playing mode. Flask is used to stream a sequence of JPEG pictures, also known as Motion JPEG.
-                          This solution has the advantage of less latency, but meaning less quality too, because JPEG compression is not very fitted for streaming.</p>
-                      <img src="images/project/VR_to_AR/06.png">
+                      <p>There are 3 coloured squares either in green or red and the selected target should be the square with the 
+                          odd colour. A sensor camera is above the scene allowing the robot to simulate the visual attention process 
+                          by a computer vision method.
+                          The colour detection starts the arm movement and the motor priming receive feedback from the motor cortex 
+                          directly to the visual attention structure, to increase the strike of information relative of the movement.
+                      </p>
+                      <img src="images/project/CorLEGO/scene.jpg">
 
-                      <p>Testing using a Raspberry Pi 3</p>
-                      <img src="images/project/VR_to_AR/08.jpg">
+                      <p>The input of the CoRLEGO model are colour feature maps (presuming to be related to the brain visual cortex),
+                          following by the target selection process map which consist of 2 maps: target colour and location of the 
+                          target.
+                          The output is a 2-dimensional velocity vector that is converted into commands for the joint motors of the 
+                          arm by a blob. To do so, researchers used to calculate the distance between the centre of the gravity of 
+                          the activation blob and the centre of the velocity map (called V Map and simulating a function of the motor 
+                          cortex), using the approximation of the inverse of the Jacobian matrix kinematics algorithm.
+                      </p>
+                      <img src="images/project/CorLEGO/45.jpg">
 
+                      <p>As the simulations using a physical arm robot was time-consuming, the researchers have decided to create a
+                          virtual simulator.
+                          I have developed a virtual system using COSIVINA, MATLAB and V-REP applications.
+                          COSIVINA is a framework dedicated to the construction of dynamic neural field architectures using the MATLAB
+                          environment and allow us to create GUI to visualise the activations and play with parameters to interact in 
+                          real-time with neural fields. V-REP is a virtual platform to program and simulate robots through an IDE 
+                          (integrated development environment), LUA and C/C++ language are supported by the software.
+                          The chosen architecture is a Client-Server with V-REP as server. As COSIVINA use MATLAB, the latter must to 
+                          be connected to V-REP through a remote API to communicate properly.
+                      </p>
+                      <img src="images/project/CorLEGO/image1.jpeg">
+                      
                       <p>DataFlow diagram of the project</p>
-                      <img src="images/project/VR_to_AR/07.png">
+                      <img src="images/project/CorLEGO/image2.jpeg">
 
-                      <p>Prototype of the system</p>
-                      <img src="images/project/VR_to_AR/09.jpg">
+                      <p>The V-REP application simulate the arm robot with 2 joints moving in 2-dimensional way in front of 3 
+                          target-squares that is in either red or green colour. The upper-arm of the robot have a blue tip to 
+                          simulate the blue marker of the physical CoRLEGO arm.
+                          A camera sensor is on the top of the structure. At the launch of the application all the target has the 
+                          same red colour, then a GUI appear to allow the user to switch in real-time target’s colours.
+                      </p>
+                      <img src="images/project/CorLEGO/scene.jpg">
 
-                      <p>UDP ports are used to stream the coordinates of the hands from OpenCV to the Unity.
-                          Those coordinates are used to create a GameObject for the hands to interact with the virtual object</p>
-                      <img src="images/project/VR_to_AR/02.png">
+                      <p>The COSIVINA neural field is a field of size 50 by 50, with a sigma excitatory of 5 and inhibitory of 12.5.
+                          The colour space of the neural field is 2-dimensional but using only 1-dimensional space, this is because
+                          the colorExtraction function is quite limited. Only the horizontal positions of the targets are extracted.
+                          The colour space receives an input from the scene of the V-REP application at the rate of 60 frames max 
+                          per second and each frame is recorded in an image and then deleted after being on screen to be replaced by
+                          an updated one.
+                          Then the colour extractor extracts the area of each colour in a 3x50 matrix (50 correspond to the size of 
+                          the Neural field), 1 colour by row in an RGB (Red, Green and Blue) format, then a conversion is processed 
+                          to convert the image from RGB to HSV space (Hue, Saturation and Value). Each pixel of the camera sensor 
+                          image (50 x 50 pixels) has a Hue value corresponding to one colour and give the location of the item input
+                          in the colour dimensional space of the neural field, and the horizontal x position feed the colour dimensional
+                          space field and summed to provide a total number of pixels of each target. The intensity value of the saturation
+                          of each pixel provides the strength of the latter.
+                      </p>
+                      <img src="images/project/CorLEGO/act%20red%20green.jpg">
 
-                      <p>UML class diagram for the Hand detection part of the system.</p>
-                      <img src="images/project/VR_to_AR/01.png">
-
-                      <p>UML class diagram of the Unity part.</p>
-                      <img src="images/project/VR_to_AR/03.png">
+                      <p>I use only the first 2 rows of the matrix of the HSV colour (corresponding respectively to the red and green
+                          colour) to compare in the step function the value of each colour and pick the smaller value to choose the
+                          odd colour as the target. Then send the odd colour to the V-REP script that check which target correspond 
+                          to the odd colour and thus, initiate the arm movement to make the blue tip element reaching the target position.</p>
+                      <img src="images/project/CorLEGO/colordetected13.jpg">
 
                       <a
-                              href="https://github.com/Maaroufi/VR_to_AR_Oculus"
+                              href="https://github.com/Maaroufi/CoRLEGO"
                               target="_blank" rel="noopener noreferrer">
                           Source</a>
 
@@ -584,7 +630,7 @@
               <div class="popup">
                   <a class="close" href="#Conveyor">&times;</a>
                   <div class="content">
-                      <h2>Smart Valve</h2>
+                      <h2>System Delivery Monitoring</h2>
 
                       <p class="item-intro">
                           A Programmable delivery system monitoring of items on a conveyor belt
