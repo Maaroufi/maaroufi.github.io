@@ -14,6 +14,64 @@
     
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="css/to-style.css">
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var lazyloadImages;
+
+        if ("IntersectionObserver" in window) {
+            lazyloadImages = document.querySelectorAll(".lazy");
+            var imageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var image = entry.target;
+                        image.src = image.dataset.src;
+                        image.classList.remove("lazy");
+                        imageObserver.unobserve(image);
+                    }
+                });
+            });
+
+            lazyloadImages.forEach(function(image) {
+                imageObserver.observe(image);
+            });
+        } else {
+            var lazyloadThrottleTimeout;
+            lazyloadImages = document.querySelectorAll(".lazy");
+
+            function lazyload () {
+                if(lazyloadThrottleTimeout) {
+                    clearTimeout(lazyloadThrottleTimeout);
+                }
+
+                lazyloadThrottleTimeout = setTimeout(function() {
+                    var scrollTop = window.pageYOffset;
+                    lazyloadImages.forEach(function(img) {
+                        if(img.offsetTop < (window.innerHeight + scrollTop)) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                        }
+                    });
+                    if(lazyloadImages.length == 0) {
+                        document.removeEventListener("scroll", lazyload);
+                        window.removeEventListener("resize", lazyload);
+                        window.removeEventListener("orientationChange", lazyload);
+                    }
+                }, 20);
+            }
+
+            document.addEventListener("scroll", lazyload);
+            window.addEventListener("resize", lazyload);
+            window.addEventListener("orientationChange", lazyload);
+        }
+    })
+        </script>
+    
+    
+    
 </head>
   <body>
 
@@ -84,7 +142,7 @@
                   </div>
                   <div class="col-lg-5 col-md-12 col-12">
                       <div class="about-image svg, box">
-                          <img src="images/undraw/me.jpg" class="img-fluid" alt="svg image">
+                          <img data-src="images/undraw/me.jpg" class="img-fluid lazy" alt="svg image">
                           <div class='text'>
                               <div>
                                   <span class='innertext'>Intelligent System Dev</span>
@@ -132,7 +190,7 @@
 
         <!-- First Project -->
           <div id="Balloon" class="grid">
-              <img src="images/project/Balloon/04.png">
+              <img class="lazy" data-src="images/project/Balloon/04.png">
               <div class="grid__body">
                   <div class="relative">
                       <a class="grid__link" href="#popupBalloon"></a>
@@ -170,29 +228,29 @@
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/hZCYuZxMAWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                       </div>
                       <p>This is a mini-game application/task to help research in upper limb (hand) motor function. It should be used with an Oculus Quest or Rift S as it utilizes hand tracking. </p>
-                      <img src="images/project/Balloon/me.jpg">
+                      <img class="lazy" data-src="images/project/Balloon/me.jpg">
 
                       <p>32 variables were recorded at every Fixed frame. The Fixed frame time used was 0.013s which correspond to a frequency of around 77 "Snapshots" of the hand and fingers state every second. Only data of the dominant hand, 
                           where the pump is attached, were captured. Speed and aperture length are calculated in real-time at the same rate.</p>
-                      <img src="images/project/Balloon/AnglesIndexMed.png">
+                      <img class="lazy" data-src="images/project/Balloon/AnglesIndexMed.png">
 
                       <p>I have developed a curve UI screen to display legal information and a virtual keyboard to allow the participants to interact</p>                   
-                      <img src="images/project/Balloon/30.png">
+                      <img class="lazy" data-src="images/project/Balloon/30.png">
 
                       <p>I build this virtual tablet as a live debug screen, showing all data being collected and check their accuracy and consistency</p>                     
-                      <img src="images/project/Balloon/40.png">
+                      <img class="lazy" data-src="images/project/Balloon/40.png">
 
                       <p>The hand pump has been designed using Blender and then imported into Unity.</p>                                           
-                        <img src="images/project/Balloon/pumprig2.JPG">
+                        <img class="lazy" data-src="images/project/Balloon/pumprig2.JPG">
 
                         <p>Then capsule colliders is used to interact with the participant's hand to make it more realistic, which is very important in Psychology</p>                    
-                        <img src="images/project/Balloon/pumpRig.JPG">
+                        <img class="lazy" data-src="images/project/Balloon/pumpRig.JPG">
 
                       <p>Animator view of the avatar on unity.</p>
-                      <img src="images/project/Balloon/claireAnim.JPG">
+                      <img class="lazy" data-src="images/project/Balloon/claireAnim.JPG">
 
                       <p>The score and performance feedback are displayed on the virtual screen of the command panel</p>
-                      <img src="images/project/Balloon/13.png">
+                      <img class="lazy" data-src="images/project/Balloon/13.png">
 
                       <div class="close_project">                      
                         <a class="btn btn-warning" type="button" href="#Balloon">
@@ -206,7 +264,7 @@
 
           <!-- Second Project -->
           <div id="CorLEGO" class="grid">
-              <img src="images/project/CorLEGO/Corlego.jpg">
+              <img class="lazy" data-src="images/project/CorLEGO/Corlego.jpg">
               <div class="grid__body">
                   <div class="relative">
                       <a class="grid__link" href="#popupCorLEGO"></a>
@@ -238,7 +296,7 @@
                              target="_blank" rel="noopener noreferrer">
                               here</a>
                       </p>
-                      <img src="images/project/CorLEGO/Corlego.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/Corlego.jpg">
 
                       <p>CoRLEGO is an arm robot (with a 2-dimensional movement) developed by the researchers of the project, that 
                           imitate how the attention leak onto the motor system. It follows the close-loop control (Todorov, 2004) 
@@ -248,7 +306,7 @@
                           robotic arm used for the original project. To do so I used Cosivina, a framework to construct dynamic field
                           architectures in Matlab and simulate the evolution of activation in these architectures, and CoppeliaSim 
                           (formerly known as V-REP), a robot simulation platform</p>
-                      <img src="images/project/CorLEGO/verygood.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/verygood.jpg">
 
                       <p>There are 3 coloured squares either in green or red and the selected target should be the square with the 
                           odd colour. A sensor camera is above the scene allowing the robot to simulate the visual attention process 
@@ -256,7 +314,7 @@
                           The colour detection starts the arm movement and the motor priming receive feedback from the motor cortex 
                           directly to the visual attention structure, to increase the strike of information relative of the movement.
                       </p>
-                      <img src="images/project/CorLEGO/scene.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/scene.jpg">
 
                       <p>The input of the CoRLEGO model are colour feature maps (presuming to be related to the brain visual cortex),
                           following by the target selection process map which consist of 2 maps: target colour and location of the 
@@ -266,7 +324,7 @@
                           the activation blob and the centre of the velocity map (called V Map and simulating a function of the motor 
                           cortex), using the approximation of the inverse of the Jacobian matrix kinematics algorithm.
                       </p>
-                      <img src="images/project/CorLEGO/45.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/45.jpg">
 
                       <p>As the simulations using a physical arm robot was time-consuming, the researchers have decided to create a
                           virtual simulator.
@@ -278,10 +336,10 @@
                           The chosen architecture is a Client-Server with V-REP as server. As COSIVINA use MATLAB, the latter must to 
                           be connected to V-REP through a remote API to communicate properly.
                       </p>
-                      <img src="images/project/CorLEGO/image1.jpeg">
+                      <img class="lazy" data-src="images/project/CorLEGO/image1.jpeg">
                       
                       <p>DataFlow diagram of the project</p>
-                      <img src="images/project/CorLEGO/image2.jpeg">
+                      <img class="lazy" data-src="images/project/CorLEGO/image2.jpeg">
 
                       <p>The V-REP application simulate the arm robot with 2 joints moving in 2-dimensional way in front of 3 
                           target-squares that is in either red or green colour. The upper-arm of the robot have a blue tip to 
@@ -289,7 +347,7 @@
                           A camera sensor is on the top of the structure. At the launch of the application all the target has the 
                           same red colour, then a GUI appear to allow the user to switch in real-time target’s colours.
                       </p>
-                      <img src="images/project/CorLEGO/scene.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/scene.jpg">
 
                       <p>The COSIVINA neural field is a field of size 50 by 50, with a sigma excitatory of 5 and inhibitory of 12.5.
                           The colour space of the neural field is 2-dimensional but using only 1-dimensional space, this is because
@@ -305,13 +363,13 @@
                           space field and summed to provide a total number of pixels of each target. The intensity value of the saturation
                           of each pixel provides the strength of the latter.
                       </p>
-                      <img src="images/project/CorLEGO/act%20red%20green.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/act%20red%20green.jpg">
 
                       <p>I use only the first 2 rows of the matrix of the HSV colour (corresponding respectively to the red and green
                           colour) to compare in the step function the value of each colour and pick the smaller value to choose the
                           odd colour as the target. Then send the odd colour to the V-REP script that check which target correspond 
                           to the odd colour and thus, initiate the arm movement to make the blue tip element reaching the target position.</p>
-                      <img src="images/project/CorLEGO/colordetected13.jpg">
+                      <img class="lazy" data-src="images/project/CorLEGO/colordetected13.jpg">
 
                       <a
                               href="https://github.com/Maaroufi/CoRLEGO"
@@ -319,7 +377,7 @@
                           Source</a>
 
                       <div class="close_project">
-                          <a class="btn btn-warning" type="button" href="#AR">
+                          <a class="btn btn-warning" type="button" href="#CoRLEGO">
                               <i class="fa fa-times" style="font-size: 17px;"></i>
                               <span style="font-size: 15px;">Close Project</span>
                           </a>
@@ -328,22 +386,9 @@
               </div>
           </div>
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
           <!-- Third Project -->
           <div id="AR" class="grid">
-              <img src="images/project/VR_to_AR/04.jpg">
+              <img class="lazy" data-src="images/project/VR_to_AR/04.jpg">
               <div class="grid__body">
                   <div class="relative">
                       <a class="grid__link" href="#popupAR"></a>
@@ -371,37 +416,37 @@
                             here</a>
                         <br>The poster of the project (see below) can be downloaded <a href="Poster_AR_Oculus.pptx">here</a>
                         </p>
-                        <img src="poster.JPG">
+                        <img class="lazy" data-src="poster.JPG">
 
                         <p>The aim of this project was to implement a stereo camera platform to support Augmented Reality for a Virtual reality headset. 
                             To be fully immersive, the frames captured by the cameras must match the characteristic requirements, such as field of view, of the headset 
                             device and make both the video and the virtual world aligned as much as possible to augment the real world.
                           Hand recognition systems could create a natural interaction between human and computer device, so the user can control UI or 
                           any applications designed to do so.</p> 
-                      <img src="images/project/VR_to_AR/04.jpg">
+                      <img class="lazy" data-src="images/project/VR_to_AR/04.jpg">
 
                       <p>Unity view, playing mode. Flask is used to stream a sequence of JPEG pictures, also known as Motion JPEG. 
                           This solution has the advantage of less latency, but meaning less quality too, because JPEG compression is not very fitted for streaming.</p>
-                      <img src="images/project/VR_to_AR/06.png">
+                      <img class="lazy" data-src="images/project/VR_to_AR/06.png">
 
                       <p>Testing using a Raspberry Pi 3</p>
-                      <img src="images/project/VR_to_AR/08.jpg">
+                      <img class="lazy" data-src="images/project/VR_to_AR/08.jpg">
 
                       <p>DataFlow diagram of the project</p>
-                      <img src="images/project/VR_to_AR/07.png">
+                      <img class="lazy" data-src="images/project/VR_to_AR/07.png">
 
                       <p>Prototype of the system</p>
-                      <img src="images/project/VR_to_AR/09.jpg">
+                      <img class="lazy" data-src="images/project/VR_to_AR/09.jpg">
 
                       <p>UDP ports are used to stream the coordinates of the hands from OpenCV to the Unity. 
                           Those coordinates are used to create a GameObject for the hands to interact with the virtual object</p>
-                      <img src="images/project/VR_to_AR/02.png">
+                      <img class="lazy" data-src="images/project/VR_to_AR/02.png">
 
                       <p>UML class diagram for the Hand detection part of the system.</p>
-                      <img src="images/project/VR_to_AR/01.png">
+                      <img class="lazy" data-src="images/project/VR_to_AR/01.png">
 
                       <p>UML class diagram of the Unity part.</p>
-                      <img src="images/project/VR_to_AR/03.png">
+                      <img class="lazy" data-src="images/project/VR_to_AR/03.png">
 
                       <a 
                       href="https://github.com/Maaroufi/VR_to_AR_Oculus" 
@@ -420,7 +465,7 @@
 
           <!-- Fourth Project -->
           <div id="HCI" class="grid">
-            <img src="images/project/VR_HCI/04.jpg">
+            <img class="lazy" data-src="images/project/VR_HCI/04.jpg">
             <div class="grid__body">
                 <div class="relative">
                     <a class="grid__link" href="#popupHCI"></a>
@@ -453,21 +498,21 @@
                         For people suffering of motion sickness, they can use the teleportation system. User can activate it by pushing the button X. A ray cast appear flowing 
                         from the right hand striking the ground right front of the hand, then the player can teleport to the place aimed and avoid any movement.
                     </p>
-                    <img src="images/project/VR_HCI/04.jpg">
+                    <img class="lazy" data-src="images/project/VR_HCI/04.jpg">
 
                     <p>A fade system is implemented for the transition between scene (Here from the Curve UI at the begining of the game to the main scene),
                         to avoid a loss of headtracking and a freeze of the last frame which is very uncomfortable and gives nausea </p>
-                    <img src="images/project/VR_HCI/01.jpg">
+                    <img class="lazy" data-src="images/project/VR_HCI/01.jpg">
 
                     <p>View of the fade system on the Unity scene</p>
-                    <img src="images/project/VR_HCI/05.jpg">
+                    <img class="lazy" data-src="images/project/VR_HCI/05.jpg">
 
                     <p>When the scene starts, to make the view comfortable, the menu panel appear straight front of the player with some explanation of how to play but also health warning.</p>
-                    <img src="images/project/VR_HCI/03.jpg">
+                    <img class="lazy" data-src="images/project/VR_HCI/03.jpg">
 
                     <p>A gaze pointer is visible when it over any clickable content. After closing the panel, users are able to reopen it whenever they want simply by pushing the 
                         standard “menu” button of the controller.</p>
-                    <img src="images/project/VR_HCI/02.jpg">
+                    <img class="lazy" data-src="images/project/VR_HCI/02.jpg">
 
                     <a 
                     href="https://github.com/Maaroufi/VR_Asylum" 
@@ -486,7 +531,7 @@
 
         <!-- Fifth Project -->
           <div id="Lumber" class="grid">
-            <img src="images/project/Lumberjack/02.png">
+            <img class="lazy" data-src="images/project/Lumberjack/02.png">
             <div class="grid__body">
                 <div class="relative">
                     <a class="grid__link" href="#popupLumber"></a>
@@ -511,10 +556,10 @@
                     <p>Using Unity game engine I created multiple learning smart agents that could share information to complete a task.</p>
 
                     <p> smart agents were represented by lumberjacks who would use various route planning methods (Djikstra, A* ) and random movements to avoid objects and cut down trees.</p>
-                    <img src="images/project/Lumberjack/02.png">
+                    <img class="lazy" data-src="images/project/Lumberjack/02.png">
 
                     <p>The agents were able to learn about their surrounding environment and pass the information between them to complete the task in the most efficient way.</p>
-                    <img src="images/project/Lumberjack/01.png">
+                    <img class="lazy" data-src="images/project/Lumberjack/01.png">
 
                     <a 
                     href="https://github.com/Maaroufi/LumberJack" 
@@ -533,7 +578,7 @@
 
         <!-- Sixth Project -->
           <div id="Valve" class="grid">
-            <img src="images/project/Valves/02.jpeg">
+            <img class="lazy" data-src="images/project/Valves/02.jpeg">
             <div class="grid__body">
                 <div class="relative">
                     <a class="grid__link" href="#popupValve"></a>
@@ -558,30 +603,30 @@
                     <p>We were briefed to create a remotely operated valve system using microcontrollers and servo's. 
                         The hardware would be internet connected and would be able to be monitored and controlled remotely and locally. 
                         </p>
-                    <img src="images/project/Valves/02.jpeg">
+                    <img class="lazy" data-src="images/project/Valves/02.jpeg">
 
                     <p>The system is designed to control an arduino based stepper motor system to open and close valves remotely from a web 
                         interface. The hardware automatically stores all open/close, test cases and errors to an SQL log which it then 
                         displays over on the tables page. We've also made use of charts to help visualise the data.
                         My role was Embedded Systems Developer and Hardware Engineer</p>
-                    <img src="images/project/Valves/07.jpg">
+                    <img class="lazy" data-src="images/project/Valves/07.jpg">
 
                     <p>Part of our valves brief included a web interface to remotely control, monitor and test the systems. 
                         I utilised my knowledge of Javascript & bootstrap to help completing a fully functioning website, accessable on mobiles and browsers. 
                         The website made use of SQL to store individual valve data.</p>
-                    <img src="images/project/Valves/06.jpg">
+                    <img class="lazy" data-src="images/project/Valves/06.jpg">
 
                     <p>Valve Prototype designed by using Fritz Diagram</p>
-                    <img src="images/project/Valves/04.jpg">
+                    <img class="lazy" data-src="images/project/Valves/04.jpg">
 
                     <p>Data flow diagram</p>
-                    <img src="images/project/Valves/01.jpg">
+                    <img class="lazy" data-src="images/project/Valves/01.jpg">
 
                     <p>Control flow</p>
-                    <img src="images/project/Valves/03.jpg">
+                    <img class="lazy" data-src="images/project/Valves/03.jpg">
 
                     <p>UML class</p>
-                    <img src="images/project/Valves/05.jpg">
+                    <img class="lazy" data-src="images/project/Valves/05.jpg">
 
                     <a 
                     href="https://github.com/Maaroufi/Valve-control" 
@@ -600,7 +645,7 @@
           
           <!-- Seventh Project -->
           <div id="Conveyor" class="grid">
-              <img src="images/project/Conveyor/Laser.jpg">
+              <img class="lazy" data-src="images/project/Conveyor/Laser.jpg">
               <div class="grid__body">
                   <div class="relative">
                       <a class="grid__link" href="#popupConveyor"></a>
@@ -631,27 +676,27 @@
                           The design, programming, and simulation were performed by using Proteus 8.0 and MPLAB IDE v.8.92 
                           software.
                       </p>
-                      <img src="images/project/Conveyor/Legend.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/Legend.jpg">
 
                       <p>System in function</p>
-                      <img src="images/project/Conveyor/Laser.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/Laser.jpg">
                       
                       <p>Diagram</p>
-                      <img src="images/project/Conveyor/Diagram.jpeg">
+                      <img class="lazy" data-src="images/project/Conveyor/Diagram.jpeg">
 
                       <p>Schematic of the whole system simulated with Proteus 8</p>
-                      <img src="images/project/Conveyor/Schematic.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/Schematic.jpg">
                       
                       <p>We needed to set up the Port C as an INPUT because the PIC is about to receive the signal coming from the 
                           Comparator OP-AMP (through the bit 0) in order to treating it, but also as Output because we want to 
                           control a buzzer by sending a signal by the same Port (bit 7). </p>
-                      <img src="images/project/Conveyor/PORTC.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/PORTC.jpg">
 
                       <p>The MPLAB ICD</p>
-                      <img src="images/project/Conveyor/Mplab.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/Mplab.jpg">
 
                       <p>Assembly Coding using MPLAB IDE</p>
-                      <img src="images/project/Conveyor/Program.jpg">
+                      <img class="lazy" data-src="images/project/Conveyor/Program.jpg">
 
                       <p><br>Video demo:</p>
 
@@ -685,48 +730,48 @@
             <!-- <h1 class="heading">skills</h1> -->
             <div class="skills-container">
                 <div class="skill-card">
-                    <img src="images/unity.png" class="skill-img" alt="">
+                    <img data-src="images/unity.png" class="lazy skill-img" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">Unity</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/csharpgrey.png" class="skill-img" alt="">
+                    <img data-src="images/csharpgrey.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">CSharp</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/Visual.png" class="skill-img" alt="">
+                    <img data-src="images/Visual.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">Visual Studio</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/CplusplusGrey.png" class="skill-img" alt="">
+                    <img data-src="images/CplusplusGrey.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Intermediate</div>
                     <h1 class="skill-name">C++</h1>
                     <!-- <p class="skill-info">Intermediate</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/python.png" class="skill-img" alt="">
+                    <img data-src="images/python.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Intermediate</div>
                     <h1 class="skill-name">Python</h1>
                     <!-- <p class="skill-info">Intermediate</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/html.png" class="skill-img" alt="">
+                    <img data-src="images/html.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">HTML</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
                 </div>                <div class="skill-card">
-                    <img src="images/css.png" class="skill-img" alt="">
+                    <img data-src="images/css.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">CSS</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
                 </div>
                 <div class="skill-card">
-                    <img src="images/js.png" class="skill-img" alt="">
+                    <img data-src="images/js.png" class="skill-img lazy" alt="">
                     <div class="skill-level">Advanced</div>
                     <h1 class="skill-name">JS</h1>
                     <!-- <p class="skill-info">Advanced</p> -->
@@ -822,9 +867,9 @@
                             <div id="social-test">
                                 <ul class="social">
                                 <li><a href="https://www.linkedin.com/in/maaroufi-m/" target= "blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="https://www.youtube.com/channel/UCawmqYuM97Xc1r9LOWAPSvw" target= "blank" rel="noopener noreferrer"><i class="fa fa-youtube" aria-hidden="true"></a></i></li>
-                                <li><a href="https://github.com/Maaroufi" target= "blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></a></i></li>
-                                <li><a href="https://www.researchgate.net/profile/M-Maaroufi" target= "blank" rel="noopener noreferrer"><i class="fab fa-researchgate" aria-hidden="true"></a></i></li>
+                                <li><a href="https://www.youtube.com/channel/UCawmqYuM97Xc1r9LOWAPSvw" target= "blank" rel="noopener noreferrer"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/Maaroufi" target= "blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.researchgate.net/profile/M-Maaroufi" target= "blank" rel="noopener noreferrer"><i class="fab fa-researchgate" aria-hidden="true"></i></a></li>
                                 </ul>                        
                             </div>
                       </div> 
