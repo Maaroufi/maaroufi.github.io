@@ -15,9 +15,6 @@
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="css/to-style.css">
 
-
-
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var lazyloadImages;
@@ -188,7 +185,7 @@
       <!-- Projects Grid -->
       <div class="masonry">
 
-        <!-- First Project -->
+          <!-- First Project -->
           <div id="Balloon" class="grid">
               <img class="lazy" data-src="images/project/Balloon/04.png">
               <div class="grid__body">
@@ -198,7 +195,7 @@
                       <p class="grid__author">VR Serious Game</p>
                   </div>
                   <div class="mt-auto">
-                      <span class="grid__tag">#Unity #VR #DynamoDB #AWS #CSharp</span>
+                      <span class="grid__tag">#Unity #VR #AWS #CSharp #Rehab #upperlimb</span>
                   </div>
               </div>
           </div>
@@ -398,6 +395,126 @@
                   </div>
               </div>
           </div>
+
+
+
+
+          
+
+
+
+          <!-- First Project -->
+          <div id="Collection" class="grid">
+              <img class="lazy" data-src="images/project/CollectionData/video.png">
+              <div class="grid__body">
+                  <div class="relative">
+                      <a class="grid__link" href="#popupCollection"></a>
+                      <h1 class="grid__title">Online collection of hand tracking data</h1>
+                      <p class="grid__author">VR Serious Game</p>
+                  </div>
+                  <div class="mt-auto">
+                      <span class="grid__tag">#Unity #VR #AWS #WWWForm #Rehab #upperlimb</span>
+                  </div>
+              </div>
+          </div>
+
+          <div id="popupCollection" class="overlay">
+              <div class="popup">
+                  <a class="close" href="#Collection">&times;</a>
+                  <div class="content">
+                      <h2>Online collection of hand tracking data</h2>
+
+                      <p class="item-intro">
+                          Using online collection of hand tracking data in virtual reality: A proof of concept study with visuomotor
+                          adaptation of grip aperture. 
+                      </p>
+
+                      <p>The introduction of marker-free hand tracking to Oculus Quest devices is
+                          potentially revolutionary for motor learning research and rehabilitation. We show here that we can collect
+                          data on the position and posture of the hands remotely in an adaptation experiment.</p>
+                      <img class="lazy" data-src="images/project/CollectionData/titre.png">
+                      
+                      <p>This application is downloadable on Sidequest <a href="https://sidequestvr.com/app/1627/sub-escape"
+                                                                          target="_blank" rel="noopener noreferrer">here</a> and 
+                          the source code is on Diar's GitHub <a
+                              href="https://github.com/DiarKarim/SubEscape"
+                              target="_blank" rel="noopener noreferrer">
+                          here</a>
+                          <br>The conference for this project is published on the Society for the Neural Control of Movement (NCM) <a
+                                  href="https://ncm-society.org/wp-content/uploads/2021/04/NCMPosterAbstractBook.pdf"
+                                  target="_blank" rel="noopener noreferrer">
+                              here</a>
+                          <br>Or you may watch the video presentation (Conference NCM April 2021):
+                      </p>
+
+                      <div class="video-container">
+                          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/i0XgJIhDbUg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+                          <iframe
+                                  class="lazy"
+                                  width="560"
+                                  height="315"
+                                  data-src="https://www.youtube.com/embed/i0XgJIhDbUg&autoplay=1"
+                                  srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,
+                                  span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;
+                                  font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+                                  </style><a href=https://www.youtube.com/embed/i0XgJIhDbUg?autoplay=1>
+                                  <img src=https://img.youtube.com/vi/i0XgJIhDbUg/hqdefault.jpg 
+                                  alt='Using online collection of hand tracking data in virtual reality: A proof of concept'>
+                                  <span>▶</span></a>"
+                                  frameborder="0"
+                                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                  allowfullscreen
+                                  title="Using online collection of hand tracking data in virtual reality: A proof of concept"
+                          ></iframe>
+
+                      </div>
+                      <p>The Oculus Quest real-time marker-free hand tracking technology tracks the position and posture of the 
+                          hands in real time using only the cameras on the device itself. This enables the presence of hands with 
+                          individuated finger movements in VR. We have developed a way to collect the position of 20 markers on 
+                          the hand alongside key experimental variables on each frame. Importantly, data is recorded online and 
+                          can be collected from any Quest device in the world with an internet connection, massively expanding 
+                          the number and diversity of potential participants. Data (positions of joints of each digit recorded) 
+                          are saved through either AWS, by using the DynamoDB API, or WWWForm in Unity</p>
+                      <img class="lazy" data-src="images/project/CollectionData/image31.png">
+
+                      <p>As a proof of concept for the use of these tools we designed and implemented a VR environment (Sub Escape).
+                          As in a traditional tracking task, participants were instructed to match a constantly changing and
+                          unpredictable target. The target represented a desired grip-aperture and participants had to open or
+                          close their hand to match the target in real time. In the baseline phase of the task the aperture of the
+                          virtual hand was yoked to that of the real hand.
+                      </p>
+                      <img class="lazy" data-src="images/project/CollectionData/Aperture.png">
+
+                      <p>However, we then introduced a gain which leads to 
+                          exaggerated movements in the virtual world. Participants successfully adapted to this change and also 
+                          show de-adaptation when the relationship between virtual and real hand was restored to baseline levels. 
+                          The introduction of marker-free hand tracking to Oculus Quest devices is potentially revolutionary for 
+                          motor learning research and rehabilitation. We show here that we can collect data on the position and 
+                          posture of the hands remotely in an adaptation experiment.
+                      </p>
+                      <img class="lazy" data-src="images/project/CollectionData/adaptation.png">
+
+                      <p>Outcome: The participants from the 2 groups (Reward and NoReward groups) reduced the errors over the time, 
+                          but the reward group learn more and faster</p>
+                      <img class="lazy" data-src="images/project/CollectionData/trial.png">
+
+                      <div class="close_project">
+                          <a class="btn btn-warning" type="button" href="#Collection">
+                              <i class="fa fa-times" style="font-size: 17px;"></i>
+                              <span style="font-size: 15px;">Close Project</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          
+          
+          
+          
+          
+          
           
           <!-- Third Project -->
           <div id="AR" class="grid">
@@ -491,7 +608,7 @@
             </div>
         </div>
 
-        <div id="popupHCI" class="overlay">
+          <div id="popupHCI" class="overlay">
             <div class="popup">
                 <a class="close" href="#HCI">&times;</a>
                 <div class="content">
@@ -542,7 +659,7 @@
             </div>
         </div>
 
-        <!-- Fifth Project -->
+          <!-- Fifth Project -->
           <div id="Lumber" class="grid">
             <img class="lazy" data-src="images/project/Lumberjack/02.png">
             <div class="grid__body">
@@ -557,7 +674,7 @@
             </div>
         </div>
 
-        <div id="popupLumber" class="overlay">
+          <div id="popupLumber" class="overlay">
             <div class="popup">
                 <a class="close" href="#Lumber">&times;</a>
                 <div class="content">
@@ -589,7 +706,7 @@
             </div>
         </div>
 
-        <!-- Sixth Project -->
+          <!-- Sixth Project -->
           <div id="Valve" class="grid">
             <img class="lazy" data-src="images/project/Valves/02.jpeg">
             <div class="grid__body">
@@ -604,7 +721,7 @@
             </div>
         </div>
 
-        <div id="popupValve" class="overlay">
+          <div id="popupValve" class="overlay">
             <div class="popup">
                 <a class="close" href="#Valve">&times;</a>
                 <div class="content">
